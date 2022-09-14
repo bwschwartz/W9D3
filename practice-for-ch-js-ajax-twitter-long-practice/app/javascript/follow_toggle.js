@@ -1,4 +1,5 @@
 import { API, broadcast } from "./util";
+import { followUserFunc } from "./util/api";
 
 export default class FollowToggle {
   constructor(toggleButton) {
@@ -17,7 +18,11 @@ export default class FollowToggle {
   }
 
   async follow() {
+    this.followState = 'following';
+    console.log(this.followState);
+    const follow = await followUserFunc(this.toggleButton.dataset.userId);
     this.followState = 'followed';
+    console.log(this.followState);
   }
 
   async unfollow() {
